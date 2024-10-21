@@ -1,4 +1,4 @@
-from AppMgr.home import main_menu
+from src.menu.home import main_menu
 
 def main():
   main_menu()

@@ -1,11 +1,10 @@
-
-from AppMgr.contato import *
-from AppMgr.profissional import *
-from AppMgr.agendamentos import *
+from src.utils import start_menu
+from src.menu.contato import *
+from src.menu.profissional import *
+from src.menu.agendamentos import *
 
 def main_menu():
-  print("*** Appointment Manager ***")
-  print("---------------------------")
+  start_menu()
   print("1. Gerenciar Contatos")
   print("2. Gerenciar Profissionais")
   print("3. Gerenciar Agendamentos")
@@ -23,6 +22,7 @@ def main_menu():
     exit()
   
 def contato_menu():
+  start_menu()
   print("Gerenciar Contatos")
   print("1. Listar Contatos")
   print("2. Incluir Contato")
@@ -44,6 +44,7 @@ def contato_menu():
     main_menu()
 
 def profissional_menu():
+  start_menu()
   print("Gerenciar Profissionais")
   print("1. Listar Profissionais")
   print("2. Incluir Profissional")
@@ -65,6 +66,7 @@ def profissional_menu():
     main_menu()
 
 def agendamentos_menu():
+  start_menu()
   print("Gerenciar Agendamentos")
   print("1. Listar Agendamentos")
   print("2. Incluir Agendamento")

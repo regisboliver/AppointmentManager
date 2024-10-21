@@ -7,9 +7,9 @@ def db_connection():
     try:
         connection = mysql.connector.connect(
             host='localhost',
-            user='pin',
-            password='pin',
-            database='pin'
+            user='appmgr',
+            password='masterkey',
+            database='appmgr'
         )
         if connection.is_connected():
             print("Successfully connected to the database.")

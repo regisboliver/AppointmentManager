@@ -1,6 +1,8 @@
-from AppMgr.data import profissional_incluir, profissional_alterar, profissional_excluir, profissional_listar
+from src.utils import start_menu
+from src.data.profissional import profissional_incluir, profissional_alterar, profissional_excluir, profissional_listar
 
 def profissional_incluir_menu():
+  start_menu()
   print("Incluir Profissional")
   nome = input("Nome: ")
   sala = input("Sala: ")
@@ -9,6 +11,7 @@ def profissional_incluir_menu():
   print("Profissional incluído com sucesso!")
 
 def profissional_alterar_menu():
+  start_menu()
   print("Alterar Profissional")
   id = int(input("Id: "))
   nome = input("Nome: ")
@@ -18,11 +21,13 @@ def profissional_alterar_menu():
   print("Profissional alterado com sucesso!")
 
 def profissional_excluir_menu():
+  start_menu()
   print("Excluir Profissional") 
   id = int(input("Id: "))
   profissional_excluir(id)
   print("Profissional excluído com sucesso!")
 
 def profissional_listar_menu():
+  start_menu()
   profissional_listar()
   print("Profissionais listados com sucesso!")
