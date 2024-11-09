@@ -12,8 +12,7 @@ par_mssqlHost = "regisboliver-fatec.database.windows.net"
 par_mssqlUser = "master"
 par_mssqlPassword = "9mLePk^Y#2asSFfx7yl4"
 par_mssqlDatabase = "pin_appmgr"
-#par_sqlite3Host = "src/data/appmgr.db"
-par_sqlite3Host = "appmgr.db"
+par_sqlite3Host = "src/data/appmgr.db"
 
 def db_connection(dbType = par_dbType):
 
