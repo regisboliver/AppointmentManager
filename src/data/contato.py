@@ -1,5 +1,6 @@
 from src.data.db_conn import db_connection
 from mysql.connector import Error
+from prettytable import PrettyTable
 
 def contato_incluir(nome, email, telefone, documento):
     try:
@@ -51,11 +52,18 @@ def contato_listar():
     try:
         conn = db_connection()
         cursor = conn.cursor()
-        query = "select concat('- Id: ', id, ', Nome: ', nome, ', Email: ', email, ', Telefone: ', telefone, ', Documento: ', documento) from contato"
+        # query = "select concat('- Id: ', id, ', Nome: ', nome, ', Email: ', email, ', Telefone: ', telefone, ', Documento: ', documento) from contato"
+        query = "select nome, email, telefone from contato"
         cursor.execute(query)
         rows = cursor.fetchall()
-        for row in rows:
-            print(row)
+        table = PrettyTable()
+        table.title = "*** Appointment Manager - Contatos ***"
+        table.field_names = ["Nome", "Email", "Telefone"]
+        table.add_rows(rows)
+        table.align = "l"
+        print(table)
+        # for row in rows:
+        #     print(row)
     except Error as e:
         print(f"erro ao listar dados: {e}")
     finally:

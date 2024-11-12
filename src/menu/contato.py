@@ -1,5 +1,5 @@
 from src.utils import start_menu, end_menu
-#from src.menu.home import *#contato_menu
+from src.menu.home import *
 from src.data.contato import contato_incluir, contato_alterar, contato_excluir, contato_listar
 
 def contato_incluir_menu():

@@ -3,7 +3,7 @@
 # pip install pyodbc
 
 # parametros
-par_dbType = "mysql" # mysql, mssql, sqlite3
+par_dbType = "mssql" # mysql, mssql, sqlite3
 par_mysqlHost = "localhost"
 par_mysqlUser = "appmgr"
 par_mysqlPassword = "masterkey"
@@ -17,7 +17,7 @@ par_sqlite3Host = "src/data/appmgr.db"
 def db_connection(dbType = par_dbType):
 
     dbData = db_data(dbType)
-    print("[db_conn] db_connection_multi() - Database data:", dbData)
+    # print("[db_conn] db_connection_multi() - Database data:", dbData)
 
     match dbData["dbType"]:
         case "mysql":
@@ -31,7 +31,7 @@ def db_connection(dbType = par_dbType):
                     database= dbData["dbName"]
                 )
                 if connection.is_connected():
-                    print("[db_conn] db_connection_multi() - Successfully connected to the database (MySQL).")
+                    # print("[db_conn] db_connection_multi() - Successfully connected to the database (MySQL).")
                     return connection
             except Error as e:
                 print(f"[db_conn] db_connection_multi() - Error while connecting to MySQL: {e}")
@@ -48,7 +48,7 @@ def db_connection(dbType = par_dbType):
                     "Database={" + dbData["dbName"]     + "};"
                 )
                 if connection:
-                    print("[db_conn] db_connection_multi() - Successfully connected to the database (MSSQL).")
+                    # print("[db_conn] db_connection_multi() - Successfully connected to the database (MSSQL).")
                     return connection
             except pyodbc.Error as e:
                 print(f"[db_conn] db_connection_multi() - Error while connecting to MSSQL: {e}")
@@ -60,7 +60,7 @@ def db_connection(dbType = par_dbType):
             try:
                 connection = sqlite3.connect(dbData["dbHost"])
                 if connection:
-                    print("[db_conn] db_connection_multi() - Successfully connected to the database (SQLite3).")
+                    # print("[db_conn] db_connection_multi() - Successfully connected to the database (SQLite3).")
                     return connection
             except sqlite3.Error as e:
                 print(f"[db_conn] db_connection_multi() - Error while connecting to SQLite3: {e}")
@@ -95,6 +95,6 @@ def db_data(dbType):
     # dbData = (dbType, dbHost, dbUser, dbPassword, dbName)
     dbData = {"dbType": dbType, "dbHost": dbHost, "dbUser": dbUser, "dbPassword": dbPassword, "dbName": dbName}
 
-    print("[db_conn] db_data() - Database data:", dbData)
+    # print("[db_conn] db_data() - Database data:", dbData)
 
     return dbData
