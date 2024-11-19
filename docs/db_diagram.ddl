@@ -4,10 +4,10 @@
 Table contato {
   id char(32) [primary key, default: `UUID()`]
   criado_em timestamp [default: `CURRENT_TIMESTAMP`]
-  nome varchar (50) [not null]
-  email varchar (50) [not null]
-  telefone varchar (20) [not null]
-  documento varchar (14) [default: null]
+  nome varchar (50) [not null, unique]
+  email varchar (50) [not null, unique]
+  telefone varchar (20) [not null, unique]
+  documento varchar (14) [not null, unique]
   endereco_rua varchar (50) [default: null]
   endereco_numero varchar (10) [default: null]
   endereco_bairro varchar (50) [default: null]
@@ -21,7 +21,8 @@ Table contato {
 Table profissional {
   id char(32) [primary key, default: `UUID()`]
   criado_em timestamp [default: `CURRENT_TIMESTAMP`]
-  nome varchar (50) [not null]
+  nome varchar (50) [not null, unique]
+  registro integer [not null, unique]
   sala varchar (20) [not null]
   especialidade varchar (20) [not null]
   indisponibilidade varchar (20)
