@@ -17,6 +17,8 @@ setup(
     ],
     python_requires='>=3.12',    # Requisitos da versão do Python
     install_requires=[           # Dependências do seu projeto
-        'mysql-connector-python'
+        'mysql-connector-python',
+        'prettytable',
+        'pyodbc'
     ],
 )
