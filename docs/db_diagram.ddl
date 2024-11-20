@@ -2,8 +2,9 @@
 // Docs: https://dbml.dbdiagram.io/docs
 
 Table contato {
-  id char(32) [primary key, default: `UUID()`]
+  id char(36) [primary key, default: `UUID()`]
   criado_em timestamp [default: `CURRENT_TIMESTAMP`]
+  modificado_em datetime [default: null]
   nome varchar (50) [not null, unique]
   email varchar (50) [not null, unique]
   telefone varchar (20) [not null, unique]
@@ -19,8 +20,9 @@ Table contato {
 }
 
 Table profissional {
-  id char(32) [primary key, default: `UUID()`]
+  id char(36) [primary key, default: `UUID()`]
   criado_em timestamp [default: `CURRENT_TIMESTAMP`]
+  modificado_em datetime [default: null]
   nome varchar (50) [not null, unique]
   registro integer [not null, unique]
   sala varchar (20) [not null]
@@ -29,8 +31,10 @@ Table profissional {
 }
 
 Table agendamentos {
-  id char(32) [primary key, default: `UUID()`]
+  id char(36) [primary key, default: `UUID()`]
   criado_em timestamp [default: `CURRENT_TIMESTAMP`]
+  modificado_em datetime [default: null]
+  codigo integer [not null, unique]
   contato_id char(32) [not null]
   profissional_id char(32) [not null]
   data datetime [not null]

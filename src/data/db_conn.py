@@ -1,28 +1,25 @@
-# dependencias
-# pip install mysql-connector-python
-# pip install pyodbc
-
 # parametros
 par_dbType = "mssql" # mysql, mssql, sqlite3
+
 par_mysqlHost = "localhost"
 par_mysqlUser = "appmgr"
 par_mysqlPassword = "masterkey"
 par_mysqlDatabase = "appmgr"
+
 par_mssqlHost = "regisboliver-fatec.database.windows.net"
 par_mssqlUser = "master"
 par_mssqlPassword = "9mLePk^Y#2asSFfx7yl4"
 par_mssqlDatabase = "pin_appmgr"
+
 par_sqlite3Host = "src/data/appmgr.db"
 
 def db_connection(dbType = par_dbType):
 
     dbData = db_data(dbType)
-    # print("[db_conn] db_connection_multi() - Database data:", dbData)
 
     match dbData["dbType"]:
         case "mysql":
             import mysql.connector
-            from mysql.connector import Error
             try:
                 connection = mysql.connector.connect(
                     host=     dbData["dbHost"],
@@ -31,9 +28,8 @@ def db_connection(dbType = par_dbType):
                     database= dbData["dbName"]
                 )
                 if connection.is_connected():
-                    # print("[db_conn] db_connection_multi() - Successfully connected to the database (MySQL).")
                     return connection
-            except Error as e:
+            except mysql.connector.Error as e:
                 print(f"[db_conn] db_connection_multi() - Error while connecting to MySQL: {e}")
                 return None
 
@@ -92,9 +88,6 @@ def db_data(dbType):
             print("[db_conn] db_data() - Invalid database type.")
             return None
     
-    # dbData = (dbType, dbHost, dbUser, dbPassword, dbName)
     dbData = {"dbType": dbType, "dbHost": dbHost, "dbUser": dbUser, "dbPassword": dbPassword, "dbName": dbName}
-
-    # print("[db_conn] db_data() - Database data:", dbData)
 
     return dbData

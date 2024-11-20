@@ -27,7 +27,7 @@ def start_menu():
   print("---------------------------")
 
 def end_menu(current_menu):
-  print("Pressione ENTER para continuar...")
+  print("Pressione ENTER para voltar ao menu...")
   input()
   match current_menu:
     case "contato":
@@ -84,7 +84,7 @@ def contato_alterar_menu():
 
 def contato_excluir_menu():
   start_menu()
-  print("Por favor, insira o id do contato a ser excluído:")
+  print("Por favor, insira o documento do contato a ser excluído:")
   documento = input("Documento: ")
   contato_excluir(documento)
   print("Contato excluído com sucesso!")
@@ -93,7 +93,6 @@ def contato_excluir_menu():
 def contato_listar_menu():
   clear_term()
   contato_listar()
-  print("Contatos listados com sucesso!")
   end_menu("contato")
 
 # profissionais
@@ -152,7 +151,6 @@ def profissional_excluir_menu():
 def profissional_listar_menu():
   clear_term()
   profissional_listar()
-  print("Profissionais listados com sucesso!")
   end_menu("profissional")
 
 # agendamentos
@@ -180,37 +178,38 @@ def agendamentos_menu():
 
 def agendamentos_incluir_menu():
   start_menu()
-  print("Incluir Agendamento") 
-  contato_id = int(input("Contato Id: ")) 
-  profissional_id = int(input("Profissional Id: ")) 
-  data = input("Data: ") 
-  duracao = input("Duracao: ") 
-  agendamentos_incluir(contato_id, profissional_id, data, duracao)
+  print("Incluir Agendamento")
+  contato_doc = input("Documento do contato: ")
+  profissional_registro = int(input("Registro do profissional: "))
+  data = input("Data (dd/mm/aaaa): ")
+  hora = input("Hora (hh:mm): ")
+  duracao = int(input("Duracao (minutos): "))
+  agendamentos_incluir(contato_doc, profissional_registro, data, hora, duracao)
   print("Agendamento incluído com sucesso!")
-  end_menu("agendamento")
+  end_menu("agendamentos")
 
 def agendamentos_alterar_menu():
   start_menu()
   print("Alterar Agendamento")
-  id = int(input("Id: "))
-  contato_id = int(input("Contato Id: "))
-  profissional_id = int(input("Profissional Id: "))
-  data = input("Data: ")
-  duracao = input("Duracao: ")
-  agendamentos_alterar(id, contato_id, profissional_id, data, duracao)
+  codigo = int(input("Código do agendamento: #"))
+  contato_doc = input("Documento do contato: ")
+  profissional_registro = int(input("Registro do profissional: "))
+  data = input("Data (dd/mm/aaaa): ")
+  hora = input("Hora (hh:mm): ")
+  duracao = int(input("Duracao (minutos): "))
+  agendamentos_alterar(codigo, contato_doc, profissional_registro, data, hora, duracao)
   print("Agendamento alterado com sucesso!")
-  end_menu("agendamento")
+  end_menu("agendamentos")
 
 def agendamentos_excluir_menu():
   start_menu()
   print("Excluir Agendamento")
-  id = int(input("Id: "))
-  agendamentos_excluir(id)
+  codigo = int(input("Código do agendamento: #"))
+  agendamentos_excluir(codigo)
   print("Agendamento excluído com sucesso!")
-  end_menu("agendamento")
+  end_menu("agendamentos")
 
 def agendamentos_listar_menu():
-    start_menu()
-    agendamentos_listar()
-    print("Agendamentos listados com sucesso!")
-    end_menu("agendamento")
+  clear_term()
+  agendamentos_listar()
+  end_menu("agendamentos")

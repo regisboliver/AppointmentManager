@@ -1,6 +1,9 @@
+use pin_appmgr;
+GO
+
+drop table IF EXISTS agendamentos;
 drop table IF EXISTS contato;
 drop table IF EXISTS profissional;
-drop table IF EXISTS agendamentos;
 
 CREATE TABLE [contato] (
   [id] uniqueidentifier PRIMARY KEY DEFAULT (NEWID()),
@@ -37,6 +40,7 @@ CREATE TABLE [agendamentos] (
   [id] uniqueidentifier PRIMARY KEY DEFAULT (NEWID()),
   [criado_em] datetime DEFAULT (GETDATE()),
   [modificado_em] datetime DEFAULT (null),
+  [codigo] integer UNIQUE NOT NULL,
   [contato_id] uniqueidentifier NOT NULL,
   [profissional_id] uniqueidentifier NOT NULL,
   [data] datetime NOT NULL,

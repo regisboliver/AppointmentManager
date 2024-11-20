@@ -1,7 +1,9 @@
-from src.data.db_conn import db_connection, par_dbType
-from src.utils import *
-from mysql.connector import Error
 from prettytable import PrettyTable
+
+from src.utils import *
+from src.data.db_conn import db_connection, par_dbType
+if par_dbType == "mssql": from pyodbc import Error
+if par_dbType == "mysql": from mysql.connector import Error
 
 def profissional_incluir(nome, registro, sala, especialidade):
     try:
@@ -11,8 +13,7 @@ def profissional_incluir(nome, registro, sala, especialidade):
         query = dbms_mark_replacer(par_dbType, query)
         values = (nome, registro, sala, especialidade)
         cursor.execute(query, values)
-        conn().commit()
-        print("insert OK")
+        conn.commit()
     except Error as e:
         print(f"erro ao inserir dados: {e}")
     finally:
@@ -26,8 +27,7 @@ def profissional_alterar(registro, nome, sala, especialidade):
         query = dbms_mark_replacer(par_dbType, query)
         values = (nome, sala, especialidade, registro)
         cursor.execute(query, values)
-        conn().commit()
-        print("update OK")
+        conn.commit()
     except Error as e:
         print(f"erro ao alterar dados: {e}")
     finally:
@@ -41,8 +41,7 @@ def profissional_excluir(registro):
         query = dbms_mark_replacer(par_dbType, query)
         values = (registro,)
         cursor.execute(query, values)
-        conn().commit()
-        print("delete OK")
+        conn.commit()
     except Error as e:
         print(f"erro ao excluir dados: {e}")
     finally:

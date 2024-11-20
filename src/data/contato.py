@@ -1,7 +1,9 @@
-from src.data.db_conn import db_connection, par_dbType
-from src.utils import *
-from mysql.connector import Error
 from prettytable import PrettyTable
+
+from src.utils import *
+from src.data.db_conn import db_connection, par_dbType
+if par_dbType == "mssql": from pyodbc import Error
+if par_dbType == "mysql": from mysql.connector import Error
 
 def contato_incluir(nome, email, telefone, documento):
     try:
