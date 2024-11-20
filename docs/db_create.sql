@@ -1,6 +1,6 @@
 CREATE TABLE `contato` (
-  `id` integer PRIMARY KEY,
-  `criado_em` timestamp,
+  `id` char(36) DEFAULT (UUID()) PRIMARY KEY,
+  `criado_em` timestamp DEFAULT CURRENT_TIMESTAMP,
   `nome` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `telefone` varchar(20) NOT NULL,
@@ -16,8 +16,8 @@ CREATE TABLE `contato` (
 );
 
 CREATE TABLE `profissional` (
-  `id` integer PRIMARY KEY,
-  `criado_em` timestamp,
+  `id` char(36) DEFAULT (UUID()) PRIMARY KEY,
+  `criado_em` timestamp DEFAULT CURRENT_TIMESTAMP,
   `nome` varchar(50) NOT NULL,
   `sala` varchar(20) NOT NULL,
   `especialidade` varchar(20) NOT NULL,
@@ -25,10 +25,10 @@ CREATE TABLE `profissional` (
 );
 
 CREATE TABLE `agendamentos` (
-  `id` integer PRIMARY KEY,
-  `criado_em` timestamp,
-  `contato_id` integer NOT NULL,
-  `profissional_id` integer NOT NULL,
+  `id` char(36) DEFAULT (UUID()) PRIMARY KEY,
+  `criado_em` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `contato_id` char(36) NOT NULL,
+  `profissional_id` char(36) NOT NULL,
   `data` datetime NOT NULL,
   `duracao` integer NOT NULL,
   `observacao` varchar(255) DEFAULT null
