@@ -20,6 +20,7 @@ select * from agendamentos;
   from agendamentos a
   inner join profissional p on a.profissional_id = p.id
   inner join contato c on a.contato_id = c.id
+  where a.data >= dateadd(hour, -3, getdate())
   order by a.data;
 
 /*
